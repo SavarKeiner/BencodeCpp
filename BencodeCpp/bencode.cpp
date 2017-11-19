@@ -1,4 +1,3 @@
-
 #include "bencode.h"
 #include "Bnode.h"
 #include <string>
@@ -240,21 +239,4 @@ int Bencode::getIntFromTF(const std::string &tf,const int tfcurpos, int& bytesRe
 	bytesRead = intAsString.length();
 
 	return returnVal;
-}
-
-void Bencode::deleteNodes(BNode node) {
-	for (int i = 0; i < node.nodeList.size(); i++) {
-		if (!node.nodeList.empty()) {
-			deleteNodes(node.nodeList.at(i));
-			delete &node;
-		}
-
-	}
-};
-
-Bencode::~Bencode() {
-	/*for (int i = 0; i < this->decodedNode.nodeList.size(); i++) {
-		deleteNodes(this->decodedNode.nodeList.at(i));
-		delete &decodedNode.nodeList.at(i);
-	}*/
 }

@@ -31,7 +31,4 @@ public:
 	BNode* createListNode(const std::string& tf, int& tfcurpos, const bool hasLabel);
 	BNode* createStringNode(const std::string& tf, int& tfcurpos);
 	BNode* createInegerNode(const std::string& tf, int& tfcurpos, const bool hasLabel);
-
-	void deleteNodes(BNode node);
-	~Bencode();
 };

@@ -1,4 +1,3 @@
-
 #include <fstream>
 #include<iostream>
 #include "bencode.h"
@@ -7,7 +6,8 @@ void printvalues(BNode node);
 
 int main() {
 	Bencode *abc = new Bencode();
-	std::ifstream is("C:\\Users\\Slav\\Desktop\\903646CC99DD59B48BB539EC42D80D7B980FD938.torrent", std::ifstream::binary);
+	std::string path = "C:\\"; // path to .torrent file
+	std::ifstream is(path, std::ifstream::binary);
 
 	if (is) {
 		// get length of file:
@@ -33,7 +33,6 @@ int main() {
 		printvalues(abc->decodedNode.nodeList.at(i));
 	}
 	delete abc;
-	_CrtDumpMemoryLeaks();
 	return 0;
 }
 
@@ -41,8 +40,6 @@ void printvalues(BNode node) {
 	std::cout << "key: " << node.key << " value: " << node.value << " type " << node.type << std::endl;
 
 	for (int i = 0; i < node.nodeList.size(); i++) {
-		//std::cout << "key: " << node.nodeList.at(i).key << " value: " << node.nodeList.at(i).value << " type " << node.nodeList.at(i).type << std::endl;
-
 		if (!node.nodeList.empty())
 			printvalues(node.nodeList.at(i));
 	}
